@@ -1,0 +1,46 @@
+{
+  "name": "file-drop",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A vanilla JS custom element for drag-and-drop file handling",
+  "main": "src/file-drop.js",
+  "module": "src/file-drop.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "web-test-runner",
+    "test:watch": "web-test-runner --watch",
+    "test:chrome": "web-test-runner --playwright --browsers chromium",
+    "test:chromium": "web-test-runner --playwright --browsers chromium",
+    "test:firefox": "web-test-runner --concurrency 1 --playwright --browsers firefox",
+    "test:webkit": "web-test-runner --playwright --browsers webkit",
+    "test:all": "web-test-runner --concurrency 1 --playwright --browsers chromium firefox webkit",
+    "test:coverage": "npm run test:chrome",
+    "test:ci": "npm run test:all -- --fail-only"
+  },
+  "keywords": [
+    "file-drop",
+    "drag-drop",
+    "file-upload",
+    "custom-element",
+    "vanilla-js",
+    "framework-agnostic",
+    "web-components"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@esm-bundle/chai": "^4.3.4",
+    "@web/test-runner": "^0.18.0",
+    "@web/test-runner-playwright": "^0.11.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/botandrose/file-drop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/botandrose/file-drop/issues"
+  },
+  "homepage": "https://github.com/botandrose/file-drop#readme"
+}
