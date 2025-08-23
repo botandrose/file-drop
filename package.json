@@ -1,6 +1,6 @@
 {
-  "name": "file-drop",
-  "version": "1.0.0",
+  "name": "@botandrose/file-drop",
+  "version": "0.1.0",
   "type": "module",
   "description": "A vanilla JS custom element for drag-and-drop file handling",
   "main": "src/file-drop.js",
@@ -42,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/botandrose/file-drop/issues"
   },
-  "homepage": "https://github.com/botandrose/file-drop#readme"
+  "homepage": "https://github.com/botandrose/file-drop#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }

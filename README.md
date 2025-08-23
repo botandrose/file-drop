@@ -12,11 +12,11 @@ A vanilla JS custom element for drag-and-drop file handling. Provides a drag-and
 ## Installation
 
 ```bash
-npm install file-drop
+npm install @botandrose/file-drop
 ```
 or
 ```html
-<script module src="https://unpkg.com/file-drop@latest/dist/file-drop.js"></script>
+<script module src="https://unpkg.com/@botandrose/file-drop@latest/src/file-drop.js"></script>
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ or
 ### With JavaScript module
 
 ```javascript
-import 'file-drop'
+import '@botandrose/file-drop'
 
 // The custom element is automatically registered
 // Just use it in your HTML
@@ -42,7 +42,7 @@ import 'file-drop'
 ### Manual registration
 
 ```javascript
-import { FileDrop } from 'file-drop'
+import { FileDrop } from '@botandrose/file-drop'
 
 // Register with a custom name if needed
 customElements.define('my-file-drop', FileDrop)
