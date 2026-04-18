@@ -1,6 +1,6 @@
 {
   "name": "@botandrose/file-drop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "A vanilla JS custom element for drag-and-drop file handling",
   "main": "src/file-drop.js",
