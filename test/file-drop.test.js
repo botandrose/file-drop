@@ -127,25 +127,21 @@ describe('FileDrop', () => {
 
   describe('styling', () => {
     it('should inject default styles by default', () => {
-      const styleElement = document.querySelector('#file-drop-default-styles')
-      expect(styleElement).to.exist
-      expect(styleElement.textContent).to.include('file-drop')
+      const hasDefaultStyles = Array.from(document.adoptedStyleSheets).some(sheet =>
+        Array.from(sheet.cssRules).some(rule => rule.cssText.includes('file-drop'))
+      )
+      expect(hasDefaultStyles).to.be.true
     })
 
-    it('should not inject styles when data-no-default-styles is present', () => {
-      // Remove existing styles first
-      const existingStyles = document.querySelector('#file-drop-default-styles')
-      if (existingStyles) {
-        existingStyles.remove()
-      }
+    it('should not inject an additional stylesheet when data-no-default-styles is present', () => {
+      const sheetCountBefore = document.adoptedStyleSheets.length
 
       const customFileDrop = document.createElement('file-drop')
       customFileDrop.setAttribute('data-no-default-styles', '')
       customFileDrop.setAttribute('for', 'test-input')
       container.appendChild(customFileDrop)
 
-      const styleElement = document.querySelector('#file-drop-default-styles')
-      expect(styleElement).to.not.exist
+      expect(document.adoptedStyleSheets.length).to.equal(sheetCountBefore)
     })
   })
 
