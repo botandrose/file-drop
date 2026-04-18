@@ -15,6 +15,37 @@
  * - Framework-agnostic vanilla JS
  */
 
+const DEFAULT_STYLES = `
+  file-drop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 60px;
+    outline-offset: -10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    text-align: center;
+    transition: all 0.15s ease 0s;
+    outline: rgba(0, 0, 0, 0.25) dashed 2px;
+    font-size: 13px;
+  }
+
+  file-drop.-dragover {
+    background: rgba(0, 0, 0, 0.1);
+    outline-color: rgba(0, 0, 0, 0.5);
+  }
+`
+
+let defaultStyleSheet = null
+function adoptDefaultStyles() {
+  if (defaultStyleSheet) return
+  defaultStyleSheet = new CSSStyleSheet()
+  defaultStyleSheet.replaceSync(DEFAULT_STYLES)
+  document.adoptedStyleSheets = [...document.adoptedStyleSheets, defaultStyleSheet]
+}
+
 class FileDrop extends HTMLElement {
   constructor() {
     super()
@@ -70,35 +101,7 @@ class FileDrop extends HTMLElement {
 
   applyDefaultStyles() {
     if (!this.hasAttribute('data-no-default-styles')) {
-      const styles = `
-        file-drop {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          box-sizing: border-box;
-          min-height: 60px;
-          outline-offset: -10px;
-          padding: 20px;
-          background: rgba(255, 255, 255, 0.25);
-          text-align: center;
-          transition: all 0.15s ease 0s;
-          outline: rgba(0, 0, 0, 0.25) dashed 2px;
-          font-size: 13px;
-        }
-
-        file-drop.-dragover {
-          background: rgba(0, 0, 0, 0.1);
-          outline-color: rgba(0, 0, 0, 0.5);
-        }
-      `
-
-      if (!document.querySelector('#file-drop-default-styles')) {
-        const styleElement = document.createElement('style')
-        styleElement.id = 'file-drop-default-styles'
-        styleElement.textContent = styles
-        document.head.appendChild(styleElement)
-      }
+      adoptDefaultStyles()
     }
   }
 }
